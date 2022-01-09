@@ -6,7 +6,7 @@ import {observeTodos} from '../../data/helpers';
 
 function TodoList({todos}) {
   // const todos = useSelector(state => state.todos);
-  todos.map(todo => console.log(todo));
+  todos?.map(todo => console.log(todo));
   if (!todos || !todos.length) {
     return (
       <View style={styles.container}>
@@ -26,9 +26,11 @@ function TodoList({todos}) {
     </View>
   );
 }
-const enhanceWithWeights = withObservables([], () => ({
-  todos: observeTodos(),
+const enhanceWithTodos = withObservables(['todos'], ({todos}) => ({
+  // todos: observeTodos(),
+  // todos: database.get('todos').query().observe(),
+  todos,
 }));
-export default enhanceWithWeights(TodoList);
+export default enhanceWithTodos(TodoList);
 
 const styles = StyleSheet.create({});

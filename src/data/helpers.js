@@ -1,6 +1,6 @@
 import {database} from './database';
 
-const todos = database.collections.get('todos');
+export const todos = database.collections.get('todos');
 
 export const observeTodos = () => todos.query().observe();
 
